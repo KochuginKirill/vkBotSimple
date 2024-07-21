@@ -34,15 +34,15 @@ public class Event
 
         if (type == ApiCallback.MESSAGE_NEW)
         {
-            message = "type: '" + type.name() + "', body: '" +
-                    eventObject.getBody() + "', from user_id: " +
-                    eventObject.getUserId();
+            message = "type: '" + type.name()
+                    + "', text: '" + eventObject.getText()
+                    + "', from user_id: " + eventObject.getUserId();
         }
         else if (type == ApiCallback.MESSAGE_REPLY)
         {
-            message = "type: '" + type.name() + "', body: '" +
-                    eventObject.getBody() + "', to user_id: " +
-                    eventObject.getUserId();
+            message = "type: '" + type.name()
+                    + "', text: '" + eventObject.getText()
+                    + "', to user_id: " + eventObject.getUserId();
         }
         else
         {
