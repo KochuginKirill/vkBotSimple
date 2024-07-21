@@ -22,8 +22,7 @@ import org.apache.log4j.Logger;
 import java.util.List;
 
 @RequiredArgsConstructor
-public abstract class Response
-{
+public abstract class Response {
     private static final Logger LOG = Logger.getLogger(Response.class);
 
     @Getter
@@ -34,27 +33,21 @@ public abstract class Response
 
     protected abstract List<NameValuePair> getQueryParameters();
 
-    public void processResponse(ApiMethod method)
-    {
+    public void processResponse(ApiMethod method) {
         try (CloseableHttpClient client = HttpClientBuilder.create()
                 .setDefaultRequestConfig(RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build())
-                .build())
-        {
+                .build()) {
             HttpGet httpGet = new HttpGet(Constants.VK_API_ENDPOINT + method.getMethodPath());
             httpGet.setURI(new URIBuilder(httpGet.getURI()).addParameters(getQueryParameters()).build());
             processResponse(client, httpGet);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             LOG.error(e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private void processResponse(CloseableHttpClient client, HttpGet httpGet)
-    {
-        try (CloseableHttpResponse response = client.execute(httpGet))
-        {
+    private void processResponse(CloseableHttpClient client, HttpGet httpGet) {
+        try (CloseableHttpResponse response = client.execute(httpGet)) {
             LOG.debug(httpGet.toString());
 
             HttpEntity entity = response.getEntity();
@@ -63,18 +56,14 @@ public abstract class Response
 
             LOG.debug("Received: " + responseString);
             checkErrors(jsonNode.path("error"));
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             LOG.error(e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private void checkErrors(JsonNode jsonNode)
-    {
-        if (!jsonNode.isEmpty())
-        {
+    private void checkErrors(JsonNode jsonNode) {
+        if (!jsonNode.isEmpty()) {
             LOG.error("Received an error: '" + jsonNode.path("error_msg").asText() +
                     "' with code [" + jsonNode.path("error_code").asText() + "]\n" +
                     "The following request parameters were passed:\n" +

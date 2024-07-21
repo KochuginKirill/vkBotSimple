@@ -3,14 +3,14 @@ package myVkBot.entites;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import myVkBot.Constants;
-import myVkBot.enums.ApiCallback ;
+import myVkBot.enums.ApiCallback;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
-public class Event
-{
+public class Event {
     @JsonProperty(Constants.EVENT_TYPE)
     private ApiCallback type;
 
@@ -28,24 +28,18 @@ public class Event
     private EventObject eventObject;
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         String message;
 
-        if (type == ApiCallback.MESSAGE_NEW)
-        {
+        if (type == ApiCallback.MESSAGE_NEW) {
             message = "type: '" + type.name()
                     + "', text: '" + eventObject.getText()
                     + "', from user_id: " + eventObject.getUserId();
-        }
-        else if (type == ApiCallback.MESSAGE_REPLY)
-        {
+        } else if (type == ApiCallback.MESSAGE_REPLY) {
             message = "type: '" + type.name()
                     + "', text: '" + eventObject.getText()
                     + "', to user_id: " + eventObject.getUserId();
-        }
-        else
-        {
+        } else {
             message = "type: '" + type.name();
         }
 

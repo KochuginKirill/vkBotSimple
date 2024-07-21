@@ -1,9 +1,9 @@
 token:
-  confirmation: 47d06910
-  access: vk1.a.WiWQtdgHoRFLwW03ePIaLHEFSZRXtEPaGgHNrQKE9OxU8entmFq91BYMJXsODvocmagogQpwDnsrqknIyo3M_o4dTokLalNhm2EuEhVGvrGV7sQCfj5xoac5UwDYVwQIT6Y5XtHligv6C8LNOYSmF6CMU9rrbalhvssAK4bmU1cHYlIonpf34WEDasv0eYsMOdqMLx8R8naNUh_Mc9Jefg
+  confirmation: #строка, которую должен вернуть сервер
+  access: #ключ доступа
 
 secret:
-  key: aaqqq
+  key: #секретный ключ
 
 server:
-  port: 8080
+  port: #ваш порт

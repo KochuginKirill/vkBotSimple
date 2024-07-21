@@ -7,8 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EventObject
-{
+public class EventObject {
     @JsonProperty(Constants.EVENT_OBJECT_ID)
     private int id;
 

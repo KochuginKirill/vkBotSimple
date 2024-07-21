@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
 @Scope("singleton")
 @Getter
 
-public class AppConfig
-{
+public class AppConfig {
     @Value("${token.confirmation}")
     public String confirmationToken;
 

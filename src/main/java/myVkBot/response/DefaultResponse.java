@@ -9,16 +9,13 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultResponse extends Response
-{
-    public DefaultResponse(Event event, String accessToken)
-    {
+public class DefaultResponse extends Response {
+    public DefaultResponse(Event event, String accessToken) {
         super(event, accessToken);
     }
 
     @Override
-    protected List<NameValuePair> getQueryParameters()
-    {
+    protected List<NameValuePair> getQueryParameters() {
         List<NameValuePair> nameValuePairs = new ArrayList<>();
 
         nameValuePairs.add(new BasicNameValuePair("message", "Вы написали: " + super.getEvent().getEventObject().getText()));
