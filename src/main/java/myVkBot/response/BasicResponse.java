@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import myVkBot.Constants;
 import myVkBot.entites.Event;
-import myVkBot.enums.ApiMethod;
+import myVkBot.enums.MethodApi;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.HttpEntity;
@@ -22,8 +22,8 @@ import org.apache.log4j.Logger;
 import java.util.List;
 
 @RequiredArgsConstructor
-public abstract class Response {
-    private static final Logger LOG = Logger.getLogger(Response.class);
+public abstract class BasicResponse {
+    private static final Logger LOG = Logger.getLogger(BasicResponse.class);
 
     @Getter
     private final Event event;
@@ -33,7 +33,7 @@ public abstract class Response {
 
     protected abstract List<NameValuePair> getQueryParameters();
 
-    public void processResponse(ApiMethod method) {
+    public void processResponse(MethodApi method) {
         try (CloseableHttpClient client = HttpClientBuilder.create()
                 .setDefaultRequestConfig(RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build())
                 .build()) {

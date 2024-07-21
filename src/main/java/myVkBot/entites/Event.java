@@ -3,7 +3,7 @@ package myVkBot.entites;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import myVkBot.Constants;
-import myVkBot.enums.ApiCallback;
+import myVkBot.enums.CallbackApi;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 public class Event {
     @JsonProperty(Constants.EVENT_TYPE)
-    private ApiCallback type;
+    private CallbackApi type;
 
     @JsonProperty(Constants.EVENT_GROUP_ID)
     private Long groupId;
@@ -31,11 +31,11 @@ public class Event {
     public String toString() {
         String message;
 
-        if (type == ApiCallback.MESSAGE_NEW) {
+        if (type == CallbackApi.MESSAGE_NEW) {
             message = "type: '" + type.name()
                     + "', text: '" + eventObject.getText()
                     + "', from user_id: " + eventObject.getUserId();
-        } else if (type == ApiCallback.MESSAGE_REPLY) {
+        } else if (type == CallbackApi.MESSAGE_REPLY) {
             message = "type: '" + type.name()
                     + "', text: '" + eventObject.getText()
                     + "', to user_id: " + eventObject.getUserId();

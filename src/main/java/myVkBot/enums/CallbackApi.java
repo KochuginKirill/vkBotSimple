@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public enum ApiCallback {
+public enum CallbackApi {
     MESSAGE_REPLY(Constants.CALLBACK_API_EVENT_MESSAGE_REPLAY),
     CONFIRMATION(Constants.CALLBACK_API_EVENT_CONFIRMATION),
     MESSAGE_NEW(Constants.CALLBACK_API_EVENT_MESSAGE_NEW);

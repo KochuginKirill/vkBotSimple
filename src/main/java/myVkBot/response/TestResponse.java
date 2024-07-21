@@ -9,8 +9,8 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultResponse extends Response {
-    public DefaultResponse(Event event, String accessToken) {
+public class TestResponse extends BasicResponse {
+    public TestResponse(Event event, String accessToken) {
         super(event, accessToken);
     }
 
